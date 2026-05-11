@@ -15,7 +15,7 @@ EXPOSE 8080
 ENV CART_ENDPOINT=cart:8080
 ENV DB_HOST=mysql
 #COPY --from=build /opt/shipping/target/shipping-1.0.jar shipping.jar
-COPY --from=build /opt/shipping/target/*.jar shipping.jar
+COPY --from=build /opt/shipping/*.jar shipping.jar
 CMD [ "java", "-Xmn256m", "-Xmx768m", "-jar", "shipping.jar" ]
 
 
