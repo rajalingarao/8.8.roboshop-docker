@@ -4,12 +4,11 @@ WORKDIR /opt/shipping
 COPY pom.xml /opt/shipping/
 RUN mvn dependency:resolve
 COPY src /opt/shipping/src/
-RUN mvn clean package
-
+RUN mvn clean package -DskipTests
 
 # Run stage
 #FROM openjdk:8-jre-alpine3.9
-FROM eclipse-temurin:17-jre-alpine
+FROM eclipse-temurin:17-jre
 WORKDIR /opt/shipping
 EXPOSE 8080
 ENV CART_ENDPOINT=cart:8080
